@@ -1,0 +1,66 @@
+{
+    "key": "group_552d145d01892",
+    "title": "Service Area Settings",
+    "fields": [
+        {
+            "key": "field_552d31cc5b4e8",
+            "label": "Service Areas",
+            "name": "service_areas",
+            "prefix": "",
+            "type": "textarea",
+            "instructions": "Add each service area you'd like to target on its own line.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": "",
+            "rows": "",
+            "new_lines": "",
+            "readonly": 0,
+            "disabled": 0
+        },
+        {
+            "key": "field_552d84af5008c",
+            "label": "Slug",
+            "name": "service_areas_slug",
+            "prefix": "",
+            "type": "text",
+            "instructions": "The prefix for all service areas",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "service-area",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": "",
+            "readonly": 0,
+            "disabled": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "service-areas-settings"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1429046476
+}
