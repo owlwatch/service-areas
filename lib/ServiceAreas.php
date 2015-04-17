@@ -45,9 +45,10 @@ class ServiceAreas extends Snap_Wordpress_Plugin
   /**
    * @wp.filter             acf/settings/load_json
    */
-  public function acf_json_load_dir( $path )
+  public function acf_json_load_dir( $paths )
   {
-    return $this->plugin_dir.'/data/acf-json/';
+    $paths[] = $this->plugin_dir.'/data/acf-json/';
+    return $paths;
   }
   
   protected function add_settings_page()
