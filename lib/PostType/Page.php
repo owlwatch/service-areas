@@ -9,8 +9,8 @@
  * @wp.posttype.args.rewrite.with_front     false
  * @wp.posttype.args.rewrite.slug           service-area
  * @wp.posttype.args.public                 true
- * @wp.posttype.args.show_ui                true
- * @wp.posttype.args.show_in_menu           service-areas-settings
+ * @wp.posttype.args.show_ui                false
+ * @-wp.posttype.args.show_in_menu           service-areas-settings
  * @wp.posttype.args.has_archive            false
  * @wp.posttype.args.publicly_queryable     true
  *
