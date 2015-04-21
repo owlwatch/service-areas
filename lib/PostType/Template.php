@@ -6,7 +6,7 @@
  *
  * @wp.posttype.labels.all_items            Templates
  *
- * @wp.posttype.args.public                 false
+ * @wp.posttype.args.publicly_queryable     false
  * @wp.posttype.args.show_ui                true
  * @wp.posttype.args.show_in_menu           service-areas-settings
  * @wp.posttype.args.rewrite.slug           service-area-template
@@ -139,5 +139,25 @@ class ServiceAreas_PostType_Template extends Snap_Wordpress_PostType
       $value = str_replace(array('service_area', 'SERVICE_AREA'), $name, $value);
     }
     return $value;
+  }
+  
+  /**
+   * @wp.filter           wpseo_sitemaps_supported_post_types
+   */
+  public function dissallow_tmpl_sitemap( $post_types )
+  {
+    $filtered = array();
+    foreach( $post_types as $pt ){
+      if( $pt->name != $this->name ) $filtered[] = $pt;
+    }
+    return $filtered;
+  }
+  
+  /**
+   * @wp.filter           wpseo_sitemap_exclude_post_type
+   */
+  public function exclude_tmpl_sitemap( $value, $post_type)
+  {
+    return $post_type == $this->name ? true : $value;
   }
 }
