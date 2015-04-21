@@ -40,7 +40,7 @@ class ServiceAreas_PostType_Page extends Snap_Wordpress_PostType
    */
   public function slug_change( $value, $old, $new )
   {
-    if( $old != $new ) flush_rewrite_rules();
+    flush_rewrite_rules();
   }
   
   

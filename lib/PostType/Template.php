@@ -6,6 +6,7 @@
  *
  * @wp.posttype.labels.all_items            Templates
  *
+ * @wp.posttype.args.public                 false
  * @wp.posttype.args.show_ui                true
  * @wp.posttype.args.show_in_menu           service-areas-settings
  * @wp.posttype.args.rewrite.slug           service-area-template
@@ -38,7 +39,7 @@ class ServiceAreas_PostType_Template extends Snap_Wordpress_PostType
   
   public function update( $tmpl, $names=false, $insert_only = false )
   {
-    if( !$names ) $names = get_field('service_areas','option');
+    if( $names === false ) $names = get_field('service_areas','option');
     
     $names = $areas = ServiceAreas::get_areas( $names );
     
