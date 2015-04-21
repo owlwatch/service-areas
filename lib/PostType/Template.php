@@ -101,7 +101,10 @@ class ServiceAreas_PostType_Template extends Snap_Wordpress_PostType
       update_post_meta( $id, '_service_area', $name);
       update_post_meta( $id, '_service_area_tmpl', $tmpl_id );
       
-      foreach( $this->replace($meta, $name) as $key => $values ){
+      $meta_fixed = $this->replace($meta, $name, true);
+      
+      foreach( $meta_fixed as $key => $values ){
+        
         delete_post_meta( $id, $key );
         if( count( $values ) > 1 ) foreach( $values as $value ){
           add_post_meta( $id, $key, $value );
@@ -121,13 +124,16 @@ class ServiceAreas_PostType_Template extends Snap_Wordpress_PostType
   }
   
   
-  public function replace( $value, $name )
+  public function replace( $value, $name, $maybe_unserialize=false )
   {
+    if( $maybe_unserialize ){
+      $value = maybe_unserialize( $value );
+    }
     if( is_array( $value ) ) foreach( $value as $key => $val ){
-      $value[$key] = $this->replace( $val, $name );
+      $value[$key] = $this->replace( $val, $name, $maybe_unserialize );
     }
     else if( is_object( $value ) ) foreach( (array)$value as $key => $val ){
-      $value->$key = $this->replace( $val, $name );
+      $value->$key = $this->replace( $val, $name, $maybe_unserialize );
     }
     else if( is_string( $value ) ){
       $value = str_replace(array('service_area', 'SERVICE_AREA'), $name, $value);
